@@ -1,0 +1,12 @@
+{
+  "name": "My JSON Feed",
+  "author": "Your Name",
+  "description": "Connector for ingesting JSON feed into OpenCTI",
+  "version": "1.0.0",
+  "license": "Apache-2.0",
+  "url": "https://example.com",
+  "base_url": "https://example.com/api",
+  "scope": "indicator",
+  "confidence_level": 70,
+  "update": true
+}
