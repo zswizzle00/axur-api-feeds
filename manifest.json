@@ -1,11 +1,11 @@
 {
-  "name": "My JSON Feed",
-  "author": "Your Name",
-  "description": "Connector for ingesting JSON feed into OpenCTI",
+  "name": "Axur API Feed Connector",
+  "author": "zswizzle00",
+  "description": "Connector for ingesting Axur API feeds into OpenCTI",
   "version": "1.0.0",
   "license": "Apache-2.0",
-  "url": "https://example.com",
-  "base_url": "https://example.com/api",
+  "url": "https://api.axur.com",
+  "base_url": "https://api.axur.com/gateway/1.0/api/integration-feed",
   "scope": "indicator",
   "confidence_level": 70,
   "update": true
