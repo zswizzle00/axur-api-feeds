@@ -12,14 +12,19 @@ class MyFeedConnector:
             "connector_name": get_config_variable("CONNECTOR_NAME", ["connector", "name"], required=True),
             "connector_scope": get_config_variable("CONNECTOR_SCOPE", ["connector", "scope"], required=True),
             "connector_confidence_level": get_config_variable("CONNECTOR_CONFIDENCE_LEVEL", ["connector", "confidence_level"], default=50),
-            "feed_url": get_config_variable("FEED_URL", ["feed", "url"], required=True),
+            "feed_url": get_config_variable("AXUR_FEED_URL", ["feed", "url"], required=True),
+            "bearer_token": get_config_variable("AXUR_BEARER_TOKEN", ["feed", "bearer_token"], required=True),
             "feed_interval": int(get_config_variable("FEED_INTERVAL", ["feed", "interval"], default=3600)),
         }
         self.helper = OpenCTIConnectorHelper(config)
 
     def fetch_feed(self):
         try:
-            r = requests.get(self.helper.connect_conf["feed_url"], timeout=10)
+            headers = {
+                "Authorization": f"Bearer {self.helper.connect_conf['bearer_token']}",
+                "Content-Type": "application/json"
+            }
+            r = requests.get(self.helper.connect_conf["feed_url"], headers=headers, timeout=10)
             r.raise_for_status()
             data = r.json()
             return data
