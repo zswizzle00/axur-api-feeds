@@ -1,0 +1,17 @@
+version: "3"
+services:
+  connector-myfeed:
+    image: zswizzle00/Axur-API-Feeds:latest
+    environment:
+      - OPENCTI_URL=http://opencti:8080
+      - OPENCTI_TOKEN=your_opencti_api_token
+      - CONNECTOR_ID=myfeed-connector
+      - CONNECTOR_NAME=My JSON Feed
+      - CONNECTOR_SCOPE=indicator
+      - CONNECTOR_CONFIDENCE_LEVEL=70
+      - Axur_FEED_URL=https://example.com/api/feed
+      - FEED_INTERVAL=3600
+    restart: always
+    depends_on:
+      opencti:
+        condition: service_healthy
