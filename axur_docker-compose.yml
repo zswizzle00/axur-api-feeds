@@ -9,9 +9,11 @@ services:
       - CONNECTOR_NAME=My JSON Feed
       - CONNECTOR_SCOPE=indicator
       - CONNECTOR_CONFIDENCE_LEVEL=70
-      - Axur_FEED_URL=https://example.com/api/feed
+      - AXUR_FEED_URL=https://example.com/api/feed
+      - AXUR-BEARER_TOKEN=your_axur_bearer_token
       - FEED_INTERVAL=3600
     restart: always
     depends_on:
       opencti:
         condition: service_healthy
+
