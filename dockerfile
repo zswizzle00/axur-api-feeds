@@ -1,15 +1,22 @@
 FROM python:3.11-slim
 
-WORKDIR /app
-
-# Install libmagic and clean up apt cache
-RUN apt-get update && apt-get install -y --no-install-recommends \
+# Install system dependencies including libmagic
+RUN apt-get update && apt-get install -y \
     libmagic1 \
+    gcc \
     && rm -rf /var/lib/apt/lists/*
 
+# Set working directory
+WORKDIR /app
+
+# Copy requirements first for better caching
 COPY requirements.txt .
+
+# Install Python dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY axur-feed.py manifest.json ./
+# Copy the connector code
+COPY axur-feed.py .
 
+# Run the connector
 CMD ["python", "axur-feed.py"]
