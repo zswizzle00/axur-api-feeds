@@ -1,7 +1,7 @@
 version: "3"
 services:
   connector-axur-api-feed:
-    image: zswizzle00/Axur-API-Feeds:latest
+    image: zswizzle00/axur-api-feeds:latest
     environment:
       - OPENCTI_URL=http://opencti:8080
       - OPENCTI_TOKEN=your_opencti_api_token
@@ -16,6 +16,3 @@ services:
     depends_on:
       opencti:
         condition: service_healthy
-
-
-
